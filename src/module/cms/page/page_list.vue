@@ -37,62 +37,7 @@
   export default {
     data() {
       return {
-        list: [
-          {
-            "siteId": "5a751fab6abb5044e0d19ea1",
-            "pageId": "5ad92f5468db52404cad0f7c",
-            "pageName": "402885816243d2dd016243f24c030002.html",
-            "pageAliase": "课程详情页面",
-            "pageWebPath": "/course/",
-            "pageParameter": null,
-            "pagePhysicalPath": "F:/eduprojects/xc-edu-snapshotv1.0/xc-ui-pc-static-portal/course/detail/",
-            "pageType": "1",
-            "pageTemplate": null,
-            "pageHtml": null,
-            "pageStatus": null,
-            "pageCreateTime": "2018-05-26T08:49:33.332+0000",
-            "templateId": "5aec5dd70e661808240ab7a6",
-            "pageParams": null,
-            "htmlFileId": "5b091f97c5e9b7070c94a2bb",
-            "dataUrl": null
-          },
-          {
-            "siteId": "5a751fab6abb5044e0d19ea1",
-            "pageId": "5ad94b9168db5243ec846e8e",
-            "pageName": "preview_4028858162e0bc0a0162e0bfdf1a0000.html",
-            "pageAliase": "课程预览页面",
-            "pageWebPath": "/coursepre/",
-            "pageParameter": null,
-            "pagePhysicalPath": "F:\\develop\\xc_portal_static\\course\\preview\\",
-            "pageType": "1",
-            "pageTemplate": null,
-            "pageHtml": null,
-            "pageStatus": null,
-            "pageCreateTime": "2018-04-20T02:08:17.621+0000",
-            "templateId": "5a925be7b00ffc4b3c1578b5",
-            "pageParams": null,
-            "htmlFileId": "5ad94b9168db5243ec846e8f",
-            "dataUrl": "http://localhost:40200/portalview/course/get/4028858162e0bc0a0162e0bfdf1a0000"
-          },
-          {
-            "siteId": "5a751fab6abb5044e0d19ea1",
-            "pageId": "5ad94ba368db5243ec846e91",
-            "pageName": "4028858162e0bc0a0162e0bfdf1a0000.html",
-            "pageAliase": "课程详情页面",
-            "pageWebPath": "/course/",
-            "pageParameter": null,
-            "pagePhysicalPath": "F:\\develop\\xc_portal_static\\course\\detail\\",
-            "pageType": "1",
-            "pageTemplate": null,
-            "pageHtml": null,
-            "pageStatus": null,
-            "pageCreateTime": "2018-04-20T02:08:35.601+0000",
-            "templateId": "5a925be7b00ffc4b3c1578b5",
-            "pageParams": null,
-            "htmlFileId": "5ad94b9168db5243ec846e8f",
-            "dataUrl": null
-          }
-        ],
+        list: [],
         total: 20,
         params:{
           page: 1,
@@ -107,7 +52,7 @@
           this.total = res.queryResult.total
           this.list = res.queryResult.list
         })
-        alert('hhhh')
+       /* alert('hhhh')*/
       },
       changePage: function () {
         this.query()
