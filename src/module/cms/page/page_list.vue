@@ -38,7 +38,7 @@
     data() {
       return {
         list: [],
-        total: 20,
+        total: 0,
         params:{
           page: 1,
           size: 10
@@ -54,9 +54,15 @@
         })
        /* alert('hhhh')*/
       },
-      changePage: function () {
+      changePage: function (page) { //page就是当前页码
+        // alert(page)
+        this.params.page = page
         this.query()
       }
+    },
+    mounted() {
+      //当DOM元素完成渲染后调用
+      this.query()
     }
   }
 </script>
