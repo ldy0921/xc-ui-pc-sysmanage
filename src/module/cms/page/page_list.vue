@@ -1,7 +1,19 @@
 <template>
   <!--编写页面静态部分，及view部分-->
   <div>
-    <el-button type="primary" size="small" v-on:click="query">查询</el-button>
+
+    <el-form :model="params">
+      <el-select v-model="params.siteId" placeholder="请选择站点">
+        <el-option
+          v-for="item in siteList"
+          :key="item.siteId"
+          :label="item.siteName"
+          :value="item.siteId">
+        </el-option>
+      </el-select>
+      页面别名：<el-input v-model="params.pageAliase" style="width: 100px;" placeholder="请输入内容"></el-input>
+      <el-button type="primary" size="small" v-on:click="query">查询</el-button>
+    </el-form>
     <el-table
       :data="list"
       stripe
@@ -37,11 +49,14 @@
   export default {
     data() {
       return {
+        siteList: [],
         list: [],
         total: 0,
         params:{
           page: 1,
-          size: 10
+          size: 10,
+          siteId: "",
+          pageAliase: ""
         }
       }
     },
@@ -63,6 +78,10 @@
     mounted() {
       //当DOM元素完成渲染后调用
       this.query()
+      this.siteList = [
+        {siteId: "12312321", siteName: "门户主站"},
+        {siteId: "34234234234", siteName: "测试站"}
+      ]
     }
   }
 </script>
