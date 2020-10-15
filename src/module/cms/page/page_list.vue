@@ -13,6 +13,12 @@
       </el-select>
       页面别名：<el-input v-model="params.pageAliase" style="width: 100px;" placeholder="请输入内容"></el-input>
       <el-button type="primary" size="small" v-on:click="query">查询</el-button>
+      <router-link :to="{path:'/cms/page/add', query: {
+        page: this.params.page,
+        siteId: this.params.siteId
+       }}">
+        <el-button  type="primary" size="small">新增页面</el-button>
+      </router-link>
     </el-form>
     <el-table
       :data="list"
@@ -86,6 +92,11 @@
       //当DOM元素完成渲染后调用
       this.query()
       this.querySites()
+    },
+    created() {
+      //从路由上获取参数
+      this.params.page = Number.parseInt(this.$route.query.page || 1);
+      this.params.siteId = this.$route.query.siteId || '';
     }
   }
 </script>
