@@ -56,7 +56,9 @@
           page: 1,
           size: 10,
           siteId: "",
-          pageAliase: ""
+          pageAliase: "",
+          sitePage: 1,
+          siteSize: 10
         }
       }
     },
@@ -73,15 +75,17 @@
         // alert(page)
         this.params.page = page
         this.query()
+      },
+      querySites: function () {
+        cmsApi.site_list(this.params.sitePage, this.params.siteSize).then((res) => {
+          this.siteList = res.queryResult.list
+        })
       }
     },
     mounted() {
       //当DOM元素完成渲染后调用
       this.query()
-      this.siteList = [
-        {siteId: "12312321", siteName: "门户主站"},
-        {siteId: "34234234234", siteName: "测试站"}
-      ]
+      this.querySites()
     }
   }
 </script>
