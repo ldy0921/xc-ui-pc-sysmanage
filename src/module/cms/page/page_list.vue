@@ -38,6 +38,19 @@
       </el-table-column>
       <el-table-column prop="pageCreateTime" label="创建时间" width="180" >
       </el-table-column>
+      <el-table-column label="操作" width="80">
+        <template slot-scope="page">
+          <el-button
+            size="small"type="text"
+            @click="edit(page.row.pageId)">编辑
+          </el-button>
+          <el-button
+            size="small"type="text"
+            @click="del(page.row.pageId)">删除
+          </el-button>
+        </template>
+
+      </el-table-column>
     </el-table>
     <el-pagination
       layout="prev, pager, next"
@@ -85,6 +98,31 @@
       querySites: function () {
         cmsApi.site_list(this.params.sitePage, this.params.siteSize).then((res) => {
           this.siteList = res.queryResult.list
+        })
+      },
+      edit: function (pageId) {
+        this.$router.push({ path: '/cms/page/edit/' + pageId, query: {
+          page: this.params.page,
+          siteId: this.params.siteId
+          }})
+      },
+      //删除
+      del: function (pageId) {
+        this.$confirm('确定要删除此页面吗？', '提示', {}).then(()=>{
+          cmsApi.page_del(pageId).then((res) => {
+            if (res.success) {
+              this.$message({
+                type: 'success',
+                message: '删除成功'
+              });
+              this.query()
+            } else {
+              this.$message({
+                type: 'error',
+                message: '删除失败'
+              })
+            }
+          })
         })
       }
     },
